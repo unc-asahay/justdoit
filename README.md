@@ -73,30 +73,32 @@ Three things together that nobody else combines:
 
 ```mermaid
 flowchart TD
-  USER[Human] -->|prompt| LEAD[Lead Brain]
-  LEAD -->|create_task| TASKS[(Task graph<br/>b_tasks Y.Map)]
-  TASKS -->|task_assigned event| ARCH[Architect Brain]
-  TASKS -->|task_assigned event| DATA[Data Brain]
-  TASKS -->|task_assigned event| TECH[Tech Architect Brain]
-  TASKS -->|task_assigned event| REV[Reviewer Brain]
+  USER([Human]) -->|prompt| LEAD[Lead Brain]
+  LEAD -->|create_task| TASKS[("Task graph<br/>b_tasks Y.Map")]
+  TASKS -->|task_assigned| ARCH[Architect]
+  TASKS -->|task_assigned| DATA[Data]
+  TASKS -->|task_assigned| TECH[Tech Architect]
+  TASKS -->|task_assigned| REV[Reviewer]
   ARCH -->|update_task done| TASKS
   DATA -->|update_task done| TASKS
   TECH -->|update_task done| TASKS
   REV -->|update_task done| TASKS
-  ARCH -->|place_node| YDOC[(Y.Doc<br/>real-time CRDT)]
+  ARCH -->|place_node| YDOC[("Y.Doc<br/>real-time CRDT")]
   DATA -->|place_node, mermaid| YDOC
   TECH -->|place_node| YDOC
-  REV -->|message_brain, sticky| YDOC
+  REV -->|sticky, message| YDOC
   YDOC -->|render| CANVAS[Live canvas]
-  YDOC -->|manual save| GH[(GitHub repo)]
+  YDOC -->|manual save| GH[("GitHub repo")]
 
-  classDef user fill:#fef3c7,stroke:#d97706;
-  classDef brain fill:#dcfce7,stroke:#16a34a;
-  classDef store fill:#ede9fe,stroke:#7c3aed;
-  classDef render fill:#cffafe,stroke:#0891b2;
+  classDef user fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#7c2d12;
+  classDef brain fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d;
+  classDef lead fill:#bfdbfe,stroke:#1d4ed8,stroke-width:2px,color:#1e3a8a;
+  classDef store fill:#ede9fe,stroke:#7c3aed,stroke-width:2px,color:#4c1d95;
+  classDef render fill:#cffafe,stroke:#0891b2,stroke-width:2px,color:#164e63;
 
   class USER user
-  class LEAD,ARCH,DATA,TECH,REV brain
+  class LEAD lead
+  class ARCH,DATA,TECH,REV brain
   class TASKS,YDOC,GH store
   class CANVAS render
 ```
