@@ -1,0 +1,58 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+.idea/
+.vscode/
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (do not commit secrets)
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# OS / editor cruft
+Thumbs.db
+*.swp
+
+# local Brain state (user-specific, not source)
+# IndexedDB persists in the browser, but if you ever serialize it locally
+# do not commit those snapshots — keep canvas state in projects/ via the
+# SyncEngine instead.
+*.yjs
+
+# bifrost local config (contains api keys)
+.bifrost/
+
+# gstack skill debug logs
+.gstack/
